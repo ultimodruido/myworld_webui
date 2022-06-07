@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyWorld - Control Center</title>
+
+    <script type="text/javascript" src=".\libs\brython.js"></script>
+    <script type="text/javascript" src=".\libs\brython_stdlib.js"></script>
+    <script type="text/javascript" src=".\libs\ui.brython.js"></script>
+    <script type="text/javascript" src=".\libs\scripts.brython.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
+
+</head>
+<body  onload="brython(1)">
+<br>
+<div class="ui container">
+    <div class="ui brown inverted segment">
+        <h1 class="ui center aligned massive white header">
+            MyWorld Control Center</h1>
+        <a class="ui left corner label" href="./index.html">
+            <i class="home icon"></i>
+        </a>
+        <div id="connection_status_label"></div>
+    </div>
+
+    <div class="ui  cards" id="cards_container">
+
+    </div>
+</div>
+<script type="text/python">
+from scripts.control_center import control_center_main
+control_center_main()
+</script>
+</body>
+
+</html>
+

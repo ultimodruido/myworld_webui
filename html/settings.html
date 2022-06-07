@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyWorld - Settings</title>
+    <script type="text/javascript" src=".\libs\brython.js"></script>
+    <script type="text/javascript" src=".\libs\brython_stdlib.js"></script>
+    <script type="text/javascript" src=".\libs\ui.brython.js"></script>
+    <script type="text/javascript" src=".\libs\scripts.brython.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
+
+
+    <!-- local libraries not workig properly
+    <link rel="stylesheet" type="text/css" href=".\libs\semantic.min.css">
+    <script src=".\libs\jquery.min.js"></script>
+    <script src=".\libs\semantic.min.js"></script>
+    -->
+</head>
+<body  onload="brython(1)">
+<br>
+<div class="ui container">
+    <div class="ui brown inverted segment">
+        <h1 class="ui center aligned massive white header">
+            MyWorld Settings</h1>
+        <a class="ui left corner label" href="./index.html">
+            <i class="home icon"></i>
+        </a>
+        <div id="connection_status_label" class="ui bottom right attached label"><i class="spinner icon"></i></div>
+    </div>
+    <br><br>
+    <div class="ui divided items">
+        <div class="item">
+            <div class="middle aligned content">
+                <div class="header">
+                    Server
+                </div>
+                <div class="description">
+                    <p>Address and port of the server</p>
+                    <div class="ui form">
+                        <div class="fields">
+                            <div class="field">
+                                <label>Address</label>
+                                <input type="text" placeholder="127.0.0.1" id="ipt_server_address">
+                            </div>
+                            <div class="field">
+                                <label>Port</label>
+                                <input type="text" placeholder="5000" id="ipt_server_port">
+                            </div>
+                            <div class="field">
+                                <label>Save</label>
+                                <div class="ui icon primary button" id="btn_server_address">
+                                    <i class="save icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="item">
+            <div class="middle aligned content">
+                <div class="header">
+                    Remote
+                </div>
+                <div class="description">
+                    <p>Serial port used for communication with the express playground circuit.</p>
+                    <div class="ui form">
+                        <div class="fields">
+                            <div class="field">
+                                <label>Port</label>
+                                <input type="text" placeholder="COM3 or /dev/tty3" id="ipt_remote_port">
+                            </div>
+                            <div class="field">
+                                <label>Save</label>
+                                <div class="ui icon primary button" id="btn_remote_port">
+                                    <i class="save icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="item">
+            <div class="middle aligned content">
+                <div class="header">
+                    Fleet overview
+                </div>
+                <div class="description">
+
+                    <div class="ui cards" id="train_list_container">
+                        <div class="ui loading card">
+                            <div class="content">
+                                <div class="header">...fake...train...</div>
+                            </div>
+                            <div class="content">
+                                <div class="ui list">
+                                    <div class="item">
+                                        <i class="large blue wifi middle aligned icon"></i>
+                                        <div class="content">
+                                            <div class="header">Remote frequency:</div>
+                                            <div class="description">H</div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <i class="large blue barcode middle aligned icon"></i>
+                                        <div class="content">
+                                            <div class="header">Box code:</div>
+                                            <div class="description">11111</div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <i class="large blue terminal middle aligned icon"></i>
+                                        <div class="content">
+                                            <div class="header">Unique ID:</div>
+                                            <div class="description">0</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="item">
+            <div class="middle aligned content">
+                <div class="header">
+                    Fleet management
+                </div>
+                <div class="description">
+                    <p>Add a train to the fleet</p>
+                    <div class="ui form">
+                        <div class="fields">
+                            <div class="field">
+                                <label>Train name</label>
+                                <input type="text" placeholder="Red Arrow" id="ipt_train_name">
+                            </div>
+                            <div class="field">
+                                <label>Frequency</label>
+                                <input type="text" placeholder="H" id="ipt_train_freq">
+                            </div>
+                            <div class="field">
+                                <label>Save</label>
+                                <div class="ui icon primary button" id="btn_new_train">
+                                    <i class="save icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                    <p>Remove a train from the fleet</p>
+                    <div class="ui form">
+                        <div class="fields">
+                            <div class="field">
+                                <label>Train to be removed</label>
+                                <div class="ui selection dropdown labeled icon button" id="remove_train_selection">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label>Remove</label>
+                                <div class="ui icon orange button" id="btn_remove_train">
+                                    <i class="trash alternate icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="item">
+            <div class="middle aligned content">
+                <div class="header">
+                    Train management
+                </div>
+                <div class="description">
+                    <p>Change a train's properties</p>
+                    <div class="ui form">
+                        <div class="fields">
+                            <div class="field">
+                                <label>Train to be modified</label>
+                                <div class="ui selection dropdown labeled icon button" id="manage_train_selection">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fields">
+                            <div class="field">
+                                <label>Train name</label>
+                                <input type="text" placeholder="Airport Express" id="ipt_change_train_name">
+                            </div>
+                            <div class="field">
+                                <label>Save</label>
+                                <div class="ui icon primary button" id="btn_change_train_name">
+                                    <i class="save icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fields">
+                            <div class="field">
+                                <label>Train frequency</label>
+                                <input type="text" placeholder="H" id="ipt_change_train_frequency">
+                            </div>
+                            <div class="field">
+                                <label>Save</label>
+                                <div class="ui icon primary button" id="btn_change_train_frequency">
+                                    <i class="save icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fields">
+                            <div class="field">
+                                <label>Train box number</label>
+                                <input type="text" placeholder="22798" id="ipt_change_train_box">
+                            </div>
+                            <div class="field">
+                                <label>Save</label>
+                                <div class="ui icon primary button" id="btn_change_train_box">
+                                    <i class="save icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui divider"></div>
+        <div class="item">
+            <div class="middle aligned content">
+                <div class="header">
+                    Box arts gallery
+                </div>
+                <div class="description">
+                    <p>Following artworks are property of Maerklin and have been extracted from the MyWorld pdf catalogues</p>
+                    <div class="ui cards" id="box_list_container">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/python">
+from scripts.settings import settings_main
+settings_main()
+</script>
+</body>
+</html>
