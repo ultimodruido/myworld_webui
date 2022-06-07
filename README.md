@@ -47,3 +47,16 @@ Final notes
 -----------
 
 Possible bugs available, the software does not include tests yet.
+
+Screenshots
+-----------
+
+Starting page:
+
+![Main view](screenshots/main.png)
+
+Settings page:
+![Settings view](screenshots/settings.png)
+
+Fleet control page:
+![Control Center view](screenshots/control_center.png)
