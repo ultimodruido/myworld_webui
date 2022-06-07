@@ -14,7 +14,7 @@ trains from your PC browser
 Requirements
 ------------
 
-A running [MyWorld remote](github.com/ultimodruido/myworld_remote) server is necessary.
+A running [MyWorld remote](https://github.com/ultimodruido/myworld_remote) server is necessary.
 Even if the _MyWorld remote_ server is running locally, an internet connection is required,
 otherwise the fonts and icon will not be displayed properly. Probably in the future it won't 
 be necessary anymore...
