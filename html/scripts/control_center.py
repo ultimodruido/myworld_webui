@@ -24,4 +24,3 @@ def control_center_main():
         #print(f"host true in: {server_address}/train_list")
         ajax.get(f"{server_address}/train_list", oncomplete=load_trains)
         #print("host true out")
-

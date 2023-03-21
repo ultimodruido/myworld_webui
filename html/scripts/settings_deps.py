@@ -77,7 +77,7 @@ class BoxCard(Element):
         # create image
         tmp_el_1 = Element(None, html.DIV, ['image'])
         tmp_el_2 = Element(None, html.IMG, [''])
-        tmp_el_2.element.src = f"./data/{box_code}.jpg"
+        tmp_el_2.element.attrs['src'] = f"./data/{box_code}.jpg"
 
         # add the list to the Card
         tmp_el_1 <= tmp_el_2.element

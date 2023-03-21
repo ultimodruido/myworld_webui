@@ -8,9 +8,12 @@ connection_status_label = IconLabel("connection_status_label")
 
 
 def check_server_reply(reply):
+    print("check server reply\n---------------")
+    print(reply.read())
+    print("end check server reply\n---------------")
     if reply.text == '"Maerklin MyWorld universal remote API"':
         connection_status_label.set_text(f"Running on {server_address}")
-        connection_status_label.set_classes(['ui', 'bottom', 'right', 'attached', 'label'])
+        #connection_status_label.set_classes(['ui', 'bottom', 'right', 'attached', 'label'])
         connection_status_label.set_icon(['checkmark', 'icon'])
         return True
     else:
@@ -20,8 +23,11 @@ def check_server_reply(reply):
         return False
 
 
-def check_server():
-    connection_status_label.set_classes(['ui', 'bottom', 'right', 'attached', 'label'])
+def check_server(full_width=False):
+    if full_width:
+        connection_status_label.set_classes(['ui', 'bottom', 'attached', 'label'])
+    else:
+        connection_status_label.set_classes(['ui', 'bottom', 'right', 'attached', 'label'])
 
     if server_address is not None:
         # check if server exists at the address

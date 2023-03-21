@@ -1,7 +1,7 @@
 Maerklin MyWorld web UI
 =================================
 
-version number: 1.0
+version number: 1.2.1
 
 author: ultimodruido
 
@@ -51,12 +51,15 @@ Possible bugs available, the software does not include tests yet.
 Screenshots
 -----------
 
-Starting page:
+**Starting page**
 
 ![Main view](screenshots/main.png)
 
-Settings page:
+**Settings page**
 ![Settings view](screenshots/settings.png)
 
-Fleet control page:
+**Fleet control page**
 ![Control Center view](screenshots/control_center.png)
+
+**Driver page**
+![Driver view](screenshots/driver.png)

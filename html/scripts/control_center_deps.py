@@ -21,7 +21,7 @@ class TrainCard(Element):
         # create image DIV
         tmp_el_1 = Element(None, html.DIV, ['image'])
         tmp_el_2 = Element(None, html.IMG, [])
-        tmp_el_2.element.src = f"./data/{box_code}.jpg"
+        tmp_el_2.element.attrs['src'] = f"./data/{box_code}.jpg"
 
         tmp_el_1 <= tmp_el_2.element
         self <= tmp_el_1.element
@@ -116,6 +116,15 @@ class TrainCard(Element):
         # jq('.ui.slider').slider(slider_settings)
         jq(self.speed.element).slider(slider_settings)
 
+        # emergency button
+        self.sos = Button(has_icon=True, button_class_attr=['ui', 'red', 'fluid', 'button'],
+               icon_class_attr=['bell', 'icon'])
+        self.sos.id = f"btn_{train_id}_dir"
+        self.sos.set_text('SOS')
+        self.sos.set_clicked_callback(self.btn_sos_clicked)
+
+        self <= self.sos
+
     def change_direction(self, event):
         if event.target.id == f"btn_{self.train_id}_dir":
             btn_classes = self.dir.get_classes()
@@ -167,6 +176,19 @@ class TrainCard(Element):
         except ValueError as e:
             print(e)
 
+    def btn_sos_clicked(self, event):
+        if self.sos.element.text == 'SOS':
+            print(f"{server_address}/sos")
+            ajax.get(f"{server_address}/sos")
+            self.sos.set_color('green')
+            self.sos.set_icon(['bell', 'slash', 'icon'])
+            self.sos.set_text('back to normal')
+        else:
+            print(f"{server_address}/sos_release")
+            ajax.get(f"{server_address}/sos_release")
+            self.sos.set_color('red')
+            self.sos.set_icon(['bell', 'icon'])
+            self.sos.set_text('SOS')
 
 def btn_function_clicked(event):
     elem_id = event.target.id
@@ -186,3 +208,5 @@ def btn_function_clicked(event):
     elif function == 'sound2':
         print(f"{server_address}/train/{train_id}/sound2")
         ajax.post(f"{server_address}/train/{train_id}/sound2")
+
+

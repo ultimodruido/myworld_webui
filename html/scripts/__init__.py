@@ -1,2 +1,2 @@
-VERSION = 'v1.1'
+VERSION = 'v1.2a'
 print(f"[*] MyWorld universal remote library version: {VERSION}")
